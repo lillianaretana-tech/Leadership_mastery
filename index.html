@@ -138,6 +138,11 @@ a{color:inherit}
 .side-user .ux{font-size:.7rem;color:var(--brass-soft);text-transform:uppercase;letter-spacing:.08em}
 .side-logout{margin-left:auto;color:#8087a0;padding:6px;border-radius:8px}
 .side-logout:hover{color:#fff;background:#1a2034}
+.logout-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;
+  padding:.7rem;border-radius:11px;font-size:.9rem;font-weight:600;color:#c3c8d6;
+  background:#13182a;border:1px solid var(--ink-3);transition:.18s var(--ease)}
+.logout-btn:hover{background:rgba(182,92,69,.16);border-color:var(--rust);color:#f1c5ba}
+.logout-btn svg{opacity:.85}
 
 .main{min-width:0;padding:0 0 80px}
 .topbar{display:none}
@@ -548,10 +553,14 @@ tbody tr:hover{background:var(--paper-3)}
           <div class="un" id="sideName">Usuario</div>
           <div class="ux" id="sideLevel">Aprendiz</div>
         </div>
-        <button class="side-logout" id="sideLogout" title="Salir">
+        <button class="side-logout" id="sideLogout" title="Cerrar sesión">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
         </button>
       </div>
+      <button class="logout-btn" id="sideLogout2">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        Cerrar sesión
+      </button>
     </div>
   </aside>
 
@@ -611,11 +620,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Tu mejor operario, ahora a tu cargo, hace una tarea correctamente pero más lento que vos. Vas justo de tiempo. ¿Qué hacés?", o:["La hacés vos esta vez para no atrasarte y luego le explicás", "Lo dejás terminar y después le mostrás cómo ganar tiempo", "Le decís que se apure porque vas tarde", "Le quitás esa tarea y se la das a alguien más rápido"], c:1,
-         f:"La trampa es la opción 1: 'rescatar' la tarea suena práctico pero refuerza que el equipo dependa de vos. Apurarlo solo lo pone nervioso, y reasignar le quita la oportunidad de aprender. El líder invierte tiempo hoy para no tener que rescatar mañana."},
+         f:"Hacerla vos para no atrasarte suena práctico, pero refuerza que el equipo dependa de vos. Apurarlo solo lo pone nervioso, y reasignar le quita la oportunidad de aprender. El líder invierte tiempo hoy para no tener que rescatar mañana."},
         {q:"¿Cuál de estas frases refleja MEJOR la mentalidad de un líder?", o:["Si querés que algo salga bien, hacelo vos mismo", "Mi trabajo es que el equipo pueda hacerlo sin mí", "El que no rinde, se va", "Mientras la operación salga, lo demás no importa"], c:1,
-         f:"Las tres incorrectas suenan a 'liderazgo' de película, pero la 1 te convierte en cuello de botella, la 3 ignora el desarrollo y la 4 sacrifica a las personas por el número. Liderar es hacerte prescindible para la tarea, no indispensable."},
+         f:"'Hacelo vos mismo' te convierte en cuello de botella, 'el que no rinde se va' ignora el desarrollo, y 'mientras salga, lo demás no importa' sacrifica a las personas por el número. Liderar es hacerte prescindible para la tarea, no indispensable."},
         {q:"Un cliente reclama por un error que cometió tu equipo mientras vos estabas de vacaciones. ¿Qué le respondés al cliente?", o:["Que no estabas vos, que fue tu reemplazo", "Que es tu responsabilidad como líder y ya lo estás resolviendo", "Que vas a investigar quién fue y tomar medidas", "Que esas cosas pasan, nadie es perfecto"], c:1,
-         f:"Ojo con la opción 3: 'investigar al culpable' suena responsable, pero frente al cliente pone el foco en lo interno, no en él. El líder asume y resuelve de cara al cliente; el aprendizaje con el equipo es puertas adentro."}
+         f:"Decir 'no estaba yo' traslada la culpa, y 'voy a investigar quién fue' suena responsable pero frente al cliente pone el foco en lo interno, no en él. El líder asume y resuelve de cara al cliente; el aprendizaje con el equipo es puertas adentro."}
       ]
     },
     { id:"m2", icon:"💬", titulo:"Comunicación Efectiva", subtitulo:"Que el mensaje llegue y mueva", xp:100,
@@ -632,11 +641,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Le explicaste una tarea a un colaborador y te dijo 'sí, entendí'. ¿Qué es lo MÁS confiable para asegurarte de que entendió de verdad?", o:["Su 'sí, entendí'", "Pedirle que te explique con sus palabras cómo lo va a hacer", "Verlo empezar y corregirlo si se equivoca", "Dejarle el procedimiento por escrito"], c:1,
-         f:"Las opciones 3 y 4 son tentadoras: pero verlo y corregir 'después' ya costó tiempo y errores, y el escrito ayuda pero no confirma que entendió ahora. Que repita con sus palabras es lo único que revela qué comprendió antes de empezar."},
+         f:"Verlo empezar y corregir 'después' ya costó tiempo y errores, y el escrito ayuda pero no confirma que entendió ahora. El 'sí, entendí' es automático. Que repita con sus palabras es lo único que revela qué comprendió antes de empezar."},
         {q:"Un colaborador llegó tarde tres veces esta semana. ¿Cómo lo manejás?", o:["Un mensaje al grupo recordando a todos la hora de entrada", "Hablás con él en privado, directo y con respeto", "Lo dejás pasar para no generar conflicto", "Le llamás la atención frente al equipo para que sirva de ejemplo"], c:1,
-         f:"La opción 1 es la evasión más común: mandar 'una indirecta al grupo' molesta a los puntuales y no corrige al que llega tarde. Dejarlo pasar lo normaliza, y exponerlo en público humilla. Lo directo y en privado es lo que funciona."},
+         f:"Mandar 'una indirecta al grupo' molesta a los puntuales y no corrige al que llega tarde. Dejarlo pasar lo normaliza, y exponerlo en público humilla. Lo directo y en privado es lo que funciona."},
         {q:"Estás concentrado en un reporte urgente y un colaborador te interrumpe con un problema. La respuesta más efectiva es:", o:["'Ahora no, estoy ocupado'", "'Dame diez minutos y lo vemos con calma'", "Soltás todo y lo atendés de inmediato", "Le pedís que te lo mande por escrito"], c:1,
-         f:"La opción 3 parece la más 'servicial', pero atender TODO al instante destruye tus prioridades y enseña a interrumpirte siempre. Un 'ahora no' seco lo desanima. Dar una hora concreta respeta su problema y tu prioridad."}
+         f:"Atender TODO al instante destruye tus prioridades y enseña a interrumpirte siempre. Un 'ahora no' seco lo desanima, y mandar un problema por escrito es frío. Dar una hora concreta respeta su problema y tu prioridad."}
       ]
     },
     { id:"m3", icon:"🤝", titulo:"Liderazgo de Equipos", subtitulo:"Motivar, delegar y desarrollar", xp:110,
@@ -653,11 +662,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Delegaste una tarea importante a alguien capaz. ¿Cuál es el seguimiento correcto?", o:["No preguntás nada, para demostrarle confianza", "Acordás con él un punto de control a mitad de camino", "Le preguntás cada hora cómo va", "Revisás solo cuando entregue al final"], c:1,
-         f:"Cuidado con la opción 1: 'no preguntar nada' no es confianza, es abandonar. Preguntar cada hora asfixia, y revisar solo al final llega tarde para corregir. El punto de control acordado da libertad y red de seguridad a la vez."},
+         f:"'No preguntar nada' no es confianza, es abandonar. Preguntar cada hora asfixia, y revisar solo al final llega tarde para corregir. El punto de control acordado da libertad y red de seguridad a la vez."},
         {q:"Tenés que asignar la misma tarea a un colaborador con 10 años de experiencia y a uno que entró hace una semana. Lo correcto es:", o:["Darles a ambos las mismas instrucciones detalladas, por justicia", "Dar autonomía al experto y acompañar de cerca al nuevo", "Que el experto le enseñe al nuevo y vos te desentendés", "Vigilar a los dos por igual hasta que ganen tu confianza"], c:1,
-         f:"La opción 3 suena bien (mentoría), pero 'desentenderte' es abdicar tu responsabilidad de verificar. Tratarlos igual no es justicia, es comodidad del jefe. El liderazgo se adapta: más guía al nuevo, más libertad al experto."},
+         f:"Que el experto le enseñe al nuevo suena bien, pero desentenderte es abdicar tu responsabilidad de verificar. Tratarlos igual no es justicia, es comodidad del jefe. El liderazgo se adapta: más guía al nuevo, más libertad al experto."},
         {q:"Tu equipo cumple pero sin energía. Te das cuenta de que solo les hablás cuando algo sale mal. El primer cambio MÁS efectivo es:", o:["Ofrecer un bono por productividad", "Empezar a reconocer lo bueno, específico y a tiempo", "Poner metas más exigentes para motivarlos", "Reunirte una vez a explicarles lo importante que es su trabajo"], c:1,
-         f:"Casi todos eligen el bono o la charla, pero ninguno arregla un clima de pura crítica, y metas más altas solo aprietan más. El reconocimiento sincero y constante es lo que cambia la energía, y no cuesta nada."}
+         f:"El bono y la charla única no arreglan un clima de pura crítica, y metas más altas solo aprietan más. El reconocimiento sincero y constante es lo que cambia la energía, y no cuesta nada."}
       ]
     },
     { id:"m4", icon:"🗂️", titulo:"Organización del Trabajo", subtitulo:"Planificar, asignar y estandarizar", xp:100,
@@ -674,11 +683,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Llegás al turno: hay varios pendientes y el equipo esperando instrucciones. Lo primero es:", o:["Arrancar por lo primero que veas, para no perder tiempo", "Tomar diez minutos para definir prioridades y asignar", "Preguntarle al equipo qué creen ellos que hay que hacer", "Resolver vos lo más difícil mientras el equipo espera"], c:1,
-         f:"Empezar a ciegas (opción 1) garantiza caos disfrazado de acción. Preguntarle al equipo no reemplaza tu trabajo de organizar, y ponerte a resolver vos deja a todos parados. Diez minutos de plan ahorran horas de desorden."},
+         f:"Empezar a ciegas garantiza caos disfrazado de acción. Preguntarle al equipo no reemplaza tu trabajo de organizar, y ponerte a resolver vos deja a todos parados. Diez minutos de plan ahorran horas de desorden."},
         {q:"Una tarea sale distinta cada día según quién la haga. La mejor solución de fondo es:", o:["Asignársela siempre a la persona que la hace bien", "Crear un procedimiento o checklist claro del estándar", "Supervisarla vos personalmente cada vez", "Volver a explicársela verbalmente a todos"], c:1,
-         f:"La opción 1 parece eficiente pero crea dependencia: ¿y si esa persona falta? Supervisar vos no escala y lo verbal se olvida. El estándar escrito hace que salga igual de bien con cualquiera."},
+         f:"Asignársela siempre a la misma persona crea dependencia: ¿y si falta? Supervisar vos no escala y lo verbal se olvida. El estándar escrito hace que salga igual de bien con cualquiera."},
         {q:"Al repartir trabajo extra, un colaborador siempre acepta sin quejarse y otro siempre pone excusas. Lo correcto es:", o:["Seguir dándoselo al que acepta, así avanza el trabajo", "Repartir según la capacidad real de cada uno", "Dárselo al que pone excusas, para que aprenda", "Hacerlo vos para evitarte el problema"], c:1,
-         f:"La trampa es la opción 1: cargar siempre al dispuesto lo quema y premia al que evade. Dárselo al otro como castigo genera roces, y hacerlo vos no resuelve nada. El balance se hace por capacidad, no por quién no se queja."}
+         f:"Cargar siempre al dispuesto lo quema y premia al que evade. Dárselo al otro como castigo genera roces, y hacerlo vos no resuelve nada. El balance se hace por capacidad, no por quién no se queja."}
       ]
     },
     { id:"m5", icon:"⏱️", titulo:"Administración del Tiempo", subtitulo:"Lo importante antes que lo urgente", xp:100,
@@ -695,11 +704,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Tenés cuatro cosas: un correo urgente sin importancia, capacitar a tu equipo, una emergencia operativa y un reporte que vence mañana. ¿Cuál es la que NO deberías descuidar aunque no 'grite'?", o:["El correo urgente", "Capacitar al equipo", "La emergencia operativa", "El reporte que vence mañana"], c:1,
-         f:"La emergencia y el reporte ya se van a atender solos por la presión. La trampa es lo importante-no-urgente: capacitar nunca grita, por eso siempre se posterga, y es justo lo que más cuesta a largo plazo. Eso es lo que hay que proteger."},
+         f:"La emergencia y el reporte ya se van a atender solos por la presión. Lo importante-no-urgente, como capacitar, nunca grita y por eso siempre se posterga, y es justo lo que más cuesta a largo plazo. Eso es lo que hay que proteger."},
         {q:"Vivís ocupadísimo todo el día, pero lo importante nunca avanza. La causa más probable es:", o:["Que trabajás pocas horas", "Que lo urgente te consume y no agendás lo importante", "Que tu equipo no te ayuda", "Que tenés demasiadas reuniones útiles"], c:1,
-         f:"Si estás ocupadísimo, el problema no es trabajar poco (opción 1) ni el equipo (opción 3). 'Reuniones útiles' no es el problema: el problema es no proteger tiempo para lo importante, y por eso lo urgente se lo come."},
+         f:"Si estás ocupadísimo, el problema no es trabajar poco ni el equipo, y las reuniones útiles no son el problema. La causa es no proteger tiempo para lo importante, y por eso lo urgente se lo come."},
         {q:"Tu jefe te pide algo no urgente justo cuando tenés una entrega prioritaria para hoy. Lo más profesional es:", o:["Decir que sí a todo, al fin es tu jefe", "Explicarle tu prioridad de hoy y acordar cuándo harás lo nuevo", "Dejar tu entrega y hacer lo del jefe", "Decirle simplemente que no podés"], c:1,
-         f:"Decir sí a todo (opción 1) revienta tus prioridades y al final quedás mal con ambas. Soltar tu entrega la atrasa, y un 'no' seco sin alternativa es poco profesional. Negociar el cuándo es la jugada madura."}
+         f:"Decir sí a todo revienta tus prioridades y al final quedás mal con ambas cosas. Soltar tu entrega la atrasa, y un 'no' seco sin alternativa es poco profesional. Negociar el cuándo es la jugada madura."}
       ]
     },
     { id:"m6", icon:"⚖️", titulo:"Resolución de Conflictos", subtitulo:"Del problema al acuerdo", xp:110,
@@ -716,11 +725,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Dos de tu equipo discutieron fuerte. Uno viene a contarte su versión y te pide que hables con el otro. Lo primero es:", o:["Darle la razón al que vino primero y corregir al otro", "Escuchar también al otro por separado antes de actuar", "Reunirlos a los dos ya mismo para que lo aclaren", "Decirles que lo resuelvan entre ellos"], c:1,
-         f:"Reunirlos 'en caliente' sin tener las dos versiones (opción 3) casi siempre empeora la cosa. Creerle al que habló primero es injusto, y mandarlos a resolver solos ignora tu rol. Escuchá a ambos por separado primero."},
+         f:"Reunirlos en caliente sin tener las dos versiones casi siempre empeora la cosa. Creerle al que habló primero es injusto, y mandarlos a resolver solos ignora tu rol. Escuchá a ambos por separado primero."},
         {q:"Al mediar un conflicto, el objetivo PRINCIPAL del líder es:", o:["Determinar quién tuvo la razón", "Que el equipo vuelva a funcionar con un acuerdo", "Que nadie vuelva a quejarse nunca", "Quedar bien con ambas partes"], c:1,
-         f:"Buscar 'quién tuvo la razón' (opción 1) convierte el conflicto en ganador y perdedor. 'Que nadie se queje' es silencio, no solución, y 'quedar bien con ambos' es complacencia. El objetivo es que el equipo siga funcionando."},
+         f:"Buscar 'quién tuvo la razón' lo convierte en ganador y perdedor. 'Que nadie se queje' es silencio, no solución, y 'quedar bien con ambos' es complacencia. El objetivo es que el equipo siga funcionando."},
         {q:"Un colaborador te dice: 'es que fulano siempre me deja el trabajo sucio'. La mejor respuesta inicial es:", o:["'Tenés razón, ya hablo con él'", "'Contame qué pasó exactamente y lo vemos'", "'No te metás en problemas con tus compañeros'", "'Eso lo arreglan entre ustedes'"], c:1,
-         f:"La opción 1 toma partido antes de tener información: peligroso. Las opciones 3 y 4 esquivan el problema. Pedir los hechos concretos antes de juzgar es lo que evita injusticias."}
+         f:"Darle la razón de una toma partido antes de tener información: peligroso. Decirle que no se meta o que lo arreglen solos esquiva el problema. Pedir los hechos concretos antes de juzgar evita injusticias."}
       ]
     },
     { id:"m7", icon:"🎯", titulo:"Servicio al Cliente", subtitulo:"El cliente sostiene la operación", xp:100,
@@ -737,11 +746,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Un cliente reclama, molesto, por algo que SÍ hizo mal tu equipo. Lo primero es:", o:["Explicarle por qué pasó, para que entienda", "Escucharlo completo y reconocer su molestia", "Ofrecerle un descuento de inmediato", "Aclararle que no fue culpa tuya directamente"], c:1,
-         f:"Aunque tengas la explicación lista (opción 1), justificarte primero suena a defensa. Saltar al descuento sin escuchar minimiza su enojo, y deslindar culpas lo enciende más. Primero que se sienta escuchado; la solución viene después."},
+         f:"Aunque tengas la explicación lista, justificarte primero suena a defensa. Saltar al descuento sin escuchar minimiza su enojo, y deslindar culpas lo enciende más. Primero que se sienta escuchado; la solución viene después."},
         {q:"Otro departamento te pide algo 'para ya' y vos andás cargadísimo. La actitud de servicio correcta es:", o:["Atenderlos solo si te sobra tiempo, no son clientes de verdad", "Tratarlos con el mismo criterio de servicio que a un cliente externo", "Decirles que hagan fila como todos", "Mandarlos a hablar con tu jefe"], c:1,
-         f:"La trampa es pensar que un compañero 'no cuenta' como cliente (opción 1). La cadena de servicio se sostiene puertas adentro: el cliente interno merece el mismo trato que el externo."},
+         f:"Pensar que un compañero 'no cuenta' como cliente es el error. La cadena de servicio se sostiene puertas adentro: el cliente interno merece el mismo trato que el externo."},
         {q:"Le prometiste algo a un cliente y te das cuenta de que no vas a llegar a tiempo. Lo correcto es:", o:["Esperar a ver si igual lo lográs antes de avisar", "Avisarle cuanto antes y ofrecer una solución o nuevo plazo", "Cumplir como sea, aunque salga mal", "No mencionarlo, capaz ni se acuerda"], c:1,
-         f:"Esperar 'a ver si llegás' (opción 1) le quita al cliente la chance de reorganizarse y destruye la confianza cuando se entere. Cumplir mal arruina la calidad. Avisar a tiempo con una alternativa es lo que sostiene la relación."}
+         f:"Esperar 'a ver si llegás' le quita al cliente la chance de reorganizarse y destruye la confianza cuando se entere. Cumplir mal arruina la calidad. Avisar a tiempo con una alternativa es lo que sostiene la relación."}
       ]
     },
     { id:"m8", icon:"📊", titulo:"Indicadores y KPIs", subtitulo:"Lo que no se mide, no se mejora", xp:110,
@@ -758,11 +767,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Tu indicador de calidad bajó de 95% a 88% este mes. Lo PRIMERO que hace un líder es:", o:["Reportarlo y esperar al próximo mes a ver si mejora", "Buscar la causa de la caída y actuar sobre ella", "Subir la meta para presionar al equipo", "Quitar ese indicador porque desmotiva al equipo"], c:1,
-         f:"Esperar (opción 1) deja correr el problema. Subir la meta no tiene lógica si ya cayó, y quitar el indicador es esconder el problema debajo de la alfombra. El rojo dispara acción, no paciencia."},
+         f:"Esperar al próximo mes deja correr el problema. Subir la meta no tiene lógica si ya cayó, y quitar el indicador es esconder el problema debajo de la alfombra. El rojo dispara acción, no paciencia."},
         {q:"¿Cuál de estos es un buen KPI para un líder operativo?", o:["Que el equipo esté contento", "Porcentaje de cumplimiento del plan diario de tareas", "Que todos trabajen duro", "La cantidad de reuniones que hago por semana"], c:1,
-         f:"'Que estén contentos' y 'trabajar duro' no se miden con un número claro. Las reuniones son actividad, no resultado. Un KPI mide algo concreto y ligado al resultado, como el cumplimiento del plan."},
+         f:"'Que estén contentos' y 'trabajar duro' no se miden con un número claro, y las reuniones son actividad, no resultado. Un KPI mide algo concreto y ligado al resultado, como el cumplimiento del plan."},
         {q:"Tenés doce indicadores en tu reporte semanal y aun así los problemas se repiten igual. El cambio más útil es:", o:["Agregar más indicadores para no perder ningún detalle", "Quedarte con tres o cuatro clave y mirarlos seguido para decidir", "Reportar los doce con más frecuencia", "Pasarle el reporte a otra persona para que lo analice"], c:1,
-         f:"Más indicadores (opción 1) o reportar más seguido los mismos doce no cambia nada si nadie actúa. Delegar el análisis tampoco. Pocos indicadores bien mirados, que disparen decisiones, es lo que mueve la operación."}
+         f:"Más indicadores o reportar más seguido los mismos doce no cambia nada si nadie actúa, y delegar el análisis tampoco. Pocos indicadores bien mirados, que disparen decisiones, es lo que mueve la operación."}
       ]
     },
     { id:"m9", icon:"🔍", titulo:"Auditorías y Calidad", subtitulo:"Verificar para sostener el estándar", xp:100,
@@ -779,11 +788,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Cada vez que anunciás una auditoría, el equipo se pone nervioso y 'maquilla' todo; apenas pasa, vuelve al desorden. Eso indica que:", o:["El equipo es responsable y se prepara bien", "El estándar no se vive a diario, solo se finge cuando hay control", "La auditoría está bien diseñada", "Conviene avisar con menos tiempo la próxima vez"], c:1,
-         f:"Ojo: 'prepararse' (opción 1) reformula el maquillaje como algo bueno, y avisar menos (opción 4) es jugar a las sorpresas. Que se maquille demuestra que la calidad no es hábito. La solución es vivir el estándar, no esconderlo mejor."},
+         f:"Decir que 'se prepara bien' reformula el maquillaje como algo bueno, y avisar con menos tiempo es jugar a las sorpresas. Que se maquille demuestra que la calidad no es hábito. La solución es vivir el estándar, no esconderlo mejor."},
         {q:"Encontrás un incumplimiento en una auditoría. El paso que NO puede faltar es:", o:["Anotarlo en el reporte", "Definir acción correctiva, responsable y fecha, y verificar que se cerró", "Llamarle la atención a quien falló", "Repetir la auditoría la próxima semana"], c:1,
-         f:"Anotar (opción 1) es necesario pero insuficiente; un hallazgo sin cierre vuelve a aparecer. El foco en el culpable no corrige el proceso, y repetir sin acción encontrará lo mismo. Lo clave es cerrar el hallazgo con responsable y fecha."},
+         f:"Solo anotarlo es insuficiente; un hallazgo sin cierre vuelve a aparecer. El foco en el culpable no corrige el proceso, y repetir sin acción encontrará lo mismo. Lo clave es cerrar el hallazgo con responsable y fecha."},
         {q:"¿Para qué sirve realmente una auditoría bien hecha?", o:["Para tener evidencia de quién comete errores", "Para asegurar el estándar y encontrar oportunidades de mejora", "Para cumplir un requisito y archivarlo", "Para que el equipo se mantenga alerta por miedo"], c:1,
-         f:"Las opciones de vigilancia y miedo (1 y 4) generan que la gente esconda los problemas. Cumplir y archivar es burocracia. La auditoría sirve para verificar y mejorar, no para cazar culpables."}
+         f:"La vigilancia y el miedo generan que la gente esconda los problemas, y cumplir-y-archivar es burocracia. La auditoría sirve para verificar y mejorar, no para cazar culpables."}
       ]
     },
     { id:"m10", icon:"🦺", titulo:"Seguridad (EHS)", subtitulo:"Nadie se lesiona bajo tu liderazgo", xp:110,
@@ -800,11 +809,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"El equipo va atrasado. Para terminar a tiempo, un colaborador con experiencia propone hacer una tarea en altura sin arnés: 'es rapidito, siempre lo hacemos así'. Vos:", o:["Lo permitís esta única vez porque urge y él sabe lo que hace", "Detenés la tarea hasta tener el equipo y el procedimiento correctos", "Le pedís que tenga mucho cuidado y lo vigilás de cerca", "Subís vos en su lugar para hacerlo más rápido"], c:1,
-         f:"'Una sola vez', 'tiene experiencia' y 'siempre lo hicimos así' son EXACTAMENTE las frases con las que ocurren los accidentes. Vigilarlo no sustituye el arnés, y arriesgarte vos tampoco lo hace seguro. La seguridad no se negocia."},
-        {q:"Un colaborador te reporta un 'casi accidente' que por suerte no causó daño. Lo correcto es:", o:["Agradecerle, registrarlo y corregir la causa", "Decirle que no se preocupe, total no pasó nada", "Investigar para sancionar al responsable", "Anotarlo y seguir, ya se verá más adelante"], c:1,
-         f:"Minimizarlo (opción 2) desperdicia el aviso. Sancionar (opción 3) hace que la gente deje de reportar por miedo, y anotar sin actuar no previene nada. El casi-accidente es un regalo: te avisa del accidente antes de que ocurra."},
+         f:"'Una sola vez', 'tiene experiencia' y 'siempre lo hicimos así' son exactamente las frases con las que ocurren los accidentes. Vigilarlo no sustituye el arnés, y arriesgarte vos tampoco lo hace seguro. La seguridad no se negocia."},
+        {q:"Un colaborador te reporta un 'casi accidente' (good catch) que por suerte no causó daño. Lo correcto es:", o:["Agradecerle, registrarlo y corregir la causa", "Decirle que no se preocupe, total no pasó nada", "Investigar para sancionar al responsable", "Anotarlo y seguir, ya se verá más adelante"], c:0,
+         f:"En la cultura de Good Catch, el casi-accidente se agradece, se registra y se corrige la causa de raíz: te avisa del accidente antes de que ocurra. Minimizarlo desperdicia el aviso, sancionar hace que la gente deje de reportar por miedo, y solo anotar sin actuar no previene nada."},
         {q:"¿Cuál de estas situaciones es la MÁS peligrosa para la cultura de seguridad?", o:["Que ocurra un accidente y se investigue a fondo", "Que el líder se salte una norma 'por rapidez' delante del equipo", "Que un colaborador reporte muchos casi-accidentes", "Que se haga una charla de seguridad cada semana"], c:1,
-         f:"Un accidente investigado se aprende; reportar mucho es señal sana; la charla semanal suma. Lo verdaderamente peligroso es que el líder se salte una norma: con eso le da permiso a todo el equipo para hacerlo."}
+         f:"Un accidente investigado se aprende, reportar mucho es señal sana, y la charla semanal suma. Lo verdaderamente peligroso es que el líder se salte una norma: con eso le da permiso a todo el equipo para hacerlo."}
       ]
     },
     { id:"m11", icon:"📦", titulo:"Manejo de Inventarios", subtitulo:"Control de insumos y recursos", xp:100,
@@ -821,11 +830,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"El equipo se quedó sin un insumo a media jornada y tuvo que parar. La causa de FONDO casi siempre es:", o:["El proveedor entregó tarde", "No había un punto de reorden para pedir antes de llegar a cero", "El equipo gastó más de lo normal", "Mala suerte"], c:1,
-         f:"Aunque el proveedor falle (opción 1), un punto de reorden con margen te protege de quedar en cero. Sin medir el consumo no podés culpar al equipo, y 'mala suerte' no es una causa. La raíz es la falta de un punto de reorden."},
+         f:"Aunque el proveedor falle, un punto de reorden con margen te protege de quedar en cero. Sin medir el consumo no podés culpar al equipo, y 'mala suerte' no es una causa. La raíz es la falta de un punto de reorden."},
         {q:"Manejás un insumo con fecha de vencimiento y llega un lote nuevo. ¿Cuál usás primero?", o:["El lote nuevo, que está más fresco", "El lote más viejo que ya tenías (primeras entradas, primeras salidas)", "El que tengas más a mano", "Cualquiera, da lo mismo"], c:1,
-         f:"Usar primero el nuevo (opción 1) es lo intuitivo... y es la trampa: dejás vencer el viejo. PEPS —lo que entró primero, sale primero— evita justamente ese desperdicio."},
+         f:"Usar primero el nuevo es lo intuitivo, y ahí está la trampa: dejás vencer el viejo. PEPS —lo que entró primero, sale primero— evita justamente ese desperdicio."},
         {q:"Notás que el consumo de un producto se duplicó este mes sin que aumentara el trabajo. Lo correcto es:", o:["Pedir el doble para que no falte", "Investigar la causa: desperdicio, mal uso o fuga", "Asumir que ahora simplemente se usa más", "Reducir a la mitad lo que entregás"], c:1,
-         f:"Pedir el doble (opción 1) trata el síntoma y oculta el problema. Asumir que 'se usa más' sin razón es ingenuo, y recortar a ciegas es arbitrario. Un consumo que se dispara sin razón es una alerta que se investiga."}
+         f:"Pedir el doble trata el síntoma y oculta el problema. Asumir que 'se usa más' sin razón es ingenuo, y recortar a ciegas es arbitrario. Un consumo que se dispara sin razón es una alerta que se investiga."}
       ]
     },
     { id:"m12", icon:"🧾", titulo:"Administración de Pedidos", subtitulo:"Pedir bien, a tiempo y completo", xp:100,
@@ -842,11 +851,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Vas a hacer el pedido mensual. ¿En qué te basás para definir las cantidades?", o:["En lo que pediste el mes pasado, por costumbre", "En el consumo real y el inventario que tenés ahora", "En pedir el máximo para no quedarte corto nunca", "En lo que el proveedor te diga que conviene"], c:1,
-         f:"Copiar el mes pasado (opción 1) ignora que las cosas cambian. El máximo genera desperdicio y costo, y el proveedor es parte interesada. El pedido se calcula con consumo real e inventario actual."},
+         f:"Copiar el mes pasado ignora que las cosas cambian. Pedir el máximo genera desperdicio y costo, y el proveedor es parte interesada. El pedido se calcula con consumo real e inventario actual."},
         {q:"Llega el pedido y el repartidor, con prisa, te pide firmar rápido. Vos:", o:["Firmás y lo revisás con calma después", "Contás y revisás contra el pedido antes de firmar", "Firmás, ya le tenés confianza al proveedor", "Le pedís que vuelva otro día"], c:1,
-         f:"'Reviso después' (opción 1) es la trampa: lo que firmaste sin contar, lo reclamás tarde y sin pruebas. La confianza no sustituye la verificación. El momento de recibir es tu única ventana real para revisar."},
+         f:"'Reviso después' es la trampa: lo que firmaste sin contar, lo reclamás tarde y sin pruebas. La confianza no sustituye la verificación. El momento de recibir es tu única ventana real para revisar."},
         {q:"Un cliente reclama que faltó material que vos jurás haber pedido. Lo que te respalda es:", o:["Tu memoria de haberlo pedido", "El registro de qué pediste, cuándo y qué llegó", "La palabra del proveedor", "Echarle la culpa al proveedor"], c:1,
-         f:"Tu memoria (opción 1) no es prueba, y la palabra del proveedor es de una parte interesada. Echar culpas sin registro no te respalda. La trazabilidad documentada es lo único que te cubre."}
+         f:"Tu memoria no es prueba, y la palabra del proveedor es de una parte interesada. Echar culpas sin registro no te respalda. La trazabilidad documentada es lo único que te cubre."}
       ]
     },
     { id:"m13", icon:"💻", titulo:"Herramientas Digitales", subtitulo:"Trabajar mejor con tecnología", xp:100,
@@ -863,11 +872,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Llevás la asistencia en un cuaderno, los pedidos en papelitos y los reportes en tu cabeza. El riesgo MÁS grande de esto es:", o:["Que se ve poco profesional", "Que si faltás un día, nadie encuentra ni puede continuar nada", "Que gastás mucho papel", "Que tardás un poco más en cada cosa"], c:1,
-         f:"El problema de fondo no es estético (opción 1) ni el papel: es que la información atada a una sola persona se cae el día que esa persona falta. Eso paraliza la operación."},
+         f:"El problema de fondo no es estético ni el papel: es que la información atada a una sola persona se cae el día que esa persona falta. Eso paraliza la operación."},
         {q:"Querés empezar a digitalizar tu trabajo pero no sos experto en tecnología. Lo más sensato es:", o:["Esperar a tomar un curso completo antes de tocar nada", "Adoptar una herramienta a la vez, dominarla y sumar la siguiente", "Cambiar todo de golpe para no quedarte atrás", "Dejárselo a quien sepa de computadoras"], c:1,
-         f:"Esperar el curso perfecto (opción 1) es posponer para siempre. Cambiar todo de golpe abruma y se abandona, y delegarlo del todo te deja fuera. De a poco, una herramienta a la vez, es lo que crea el hábito."},
+         f:"Esperar el curso perfecto es posponer para siempre. Cambiar todo de golpe abruma y se abandona, y delegarlo del todo te deja fuera. De a poco, una herramienta a la vez, es lo que crea el hábito."},
         {q:"Tu equipo tiene cinco grupos de WhatsApp y la información importante se pierde entre tanto mensaje. La mejor solución es:", o:["Crear un sexto grupo solo para lo importante", "Definir un canal claro por tipo de información y bajar el ruido", "Mandar todo por los cinco grupos para asegurarte", "Dejar de usar WhatsApp por completo"], c:1,
-         f:"Un grupo más (opción 1) y mandar todo por todos (opción 3) solo agregan ruido. Eliminar WhatsApp es exagerado e impráctico. Ordenar qué se comunica por cada canal es lo que rescata la información importante."}
+         f:"Un grupo más y mandar todo por todos solo agregan ruido, y eliminar WhatsApp es exagerado e impráctico. Ordenar qué se comunica por cada canal es lo que rescata la información importante."}
       ]
     },
     { id:"m14", icon:"🤖", titulo:"IA Aplicada al Liderazgo", subtitulo:"La tecnología que potencia tu criterio", xp:120,
@@ -884,11 +893,11 @@ const LEADERSHIP = {
       ],
       quiz:[
         {q:"Le pediste a una IA que redacte un comunicado para tu equipo y te entrega un texto. Antes de enviarlo, lo correcto es:", o:["Enviarlo tal cual, para eso se lo pediste", "Revisarlo, ajustar el tono y el contexto, y asumir vos la responsabilidad", "Pedirle a la IA que también lo envíe", "Confiar y enviar, porque la IA no se equivoca"], c:1,
-         f:"La IA hace el borrador, pero la opción 1 y la 4 te quitan el criterio: puede equivocarse o no captar el contexto de tu equipo. La responsabilidad final del mensaje es tuya, no de la herramienta."},
+         f:"Enviarlo tal cual o confiar 'porque no se equivoca' te quitan el criterio: la IA puede fallar o no captar el contexto de tu equipo. La IA hace el borrador, pero la responsabilidad final del mensaje es tuya."},
         {q:"¿Cuál de estas instrucciones a una IA te dará un MEJOR resultado?", o:["'Ayudame con el equipo'", "'Redactá un mensaje breve y firme para el equipo sobre el cambio de horario a las 6am, en tono respetuoso'", "'Hacé algo para mañana'", "'Escribí lo que quieras'"], c:1,
-         f:"Las opciones 1, 3 y 4 son vagas: sin contexto la IA adivina y entrega cualquier cosa. La buena instrucción da contexto, es específica y pide el formato. Buen pedido, buen resultado."},
+         f:"Las instrucciones vagas hacen que la IA adivine y entregue cualquier cosa. La buena instrucción da contexto, es específica y pide el formato. Buen pedido, buen resultado."},
         {q:"Querés usar una IA para analizar la asistencia de tu equipo. ¿Cuál es el cuidado CLAVE?", o:["Ninguno, total son datos del trabajo", "No exponer datos personales o confidenciales en herramientas no autorizadas", "Usar la IA más cara, porque así es más segura", "Pedirle permiso a la IA antes de empezar"], c:1,
-         f:"'Son datos del trabajo' (opción 1) es justo el descuido que hay que evitar; el precio (opción 3) no garantiza seguridad. La responsabilidad sobre la información sensible de tu gente es tuya: usala con criterio."}
+         f:"'Son datos del trabajo' es justo el descuido que hay que evitar, y el precio no garantiza seguridad. La responsabilidad sobre la información sensible de tu gente es tuya: usala con criterio."}
       ]
     },
     { id:"m15", icon:"🏆", titulo:"Evaluación Final", subtitulo:"Demostrá tu maestría", xp:200, final:true,
@@ -1044,11 +1053,14 @@ $("#guestBtn").onclick = async ()=>{
   USER={id:"guest",email:"local@modo.local",name:"Invitado",guest:true};
   await enter();
 };
-$("#sideLogout").onclick = $("#topLogout").onclick = async ()=>{
+async function doLogout(){
+  if(!confirm("¿Cerrar sesión? Tu progreso ya quedó guardado.")) return;
   if(sb && USER && !USER.guest){ try{ await sb.auth.signOut(); }catch(e){} }
   USER=null; STATE=null;
+  $("#modalRoot").innerHTML="";
   $("#app").classList.remove("on"); $("#auth").style.display="grid";
-};
+}
+$("#sideLogout").onclick = $("#topLogout").onclick = $("#sideLogout2").onclick = doLogout;
 
 async function enter(){
   await loadState();
